@@ -30,6 +30,6 @@ streamlit run test_script_streamlit.py
 This will open a browser rendering the test script.
 
 ## Streamlit docs:
-Streamlit playground to test out code (but doesn't get saved anywhere): https://streamlit.io/playground
-Streamlit documentation: https://docs.streamlit.io/
-Streamlit cheat sheet: https://docs.streamlit.io/develop/quick-reference/cheat-sheet
+- Streamlit playground to test out code (but doesn't get saved anywhere): https://streamlit.io/playground
+- Streamlit documentation: https://docs.streamlit.io/
+- Streamlit cheat sheet: https://docs.streamlit.io/develop/quick-reference/cheat-sheet
