@@ -12,8 +12,19 @@ brew install pyenv
 pyenv install 3.12.8
 ```
 
-## Running test script
+## Running tkinter test script
 From the root folder of this repo, run the following command:
 ```
 python test_script.py
 ```
+
+## Running streamlit test script
+Make sure you have streamlit downloaded by running:
+```
+python -m pip install -r requirements.txt
+```
+Then run the following command from the root folder of this repo:
+```
+streamlit run test_script_streamlit.py
+```
+This will open a browser rendering the test script.
