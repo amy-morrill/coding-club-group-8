@@ -9,8 +9,9 @@ st.title("Build a Scientist")
 
 game_words = ['Genetic','Histology','Sequence','Clinical Trial','Mutation','Genome','Oncology']
 
-def game_word_generator(word):
-    st.write("".join("_" * len(word)))
+def game_word_generator(word): 
+    st.write(word)
+    st.write(f"`{' '.join(['_'] * len(word))}`")
 
 if game_words:
     selected_word = random.choice(game_words)
