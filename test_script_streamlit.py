@@ -25,11 +25,13 @@ def reset_button_click_count():
     st.session_state.button_click_count = 0
 
 # Create two columns to put buttons into
-button_column_one, button_column_two = st.columns(2)
+button_column_one, button_column_two = st.columns(2, border=True)
 
 # Create a button in column one that calls the increment_button_click_count function
 with button_column_one:
     st.button(label="Increment click counter", on_click = increment_button_click_count)
+    st.write("THIS IS THE LEFT COLUMN")
+    st.image("images/Microscope.jpg")
 
 # Create a button in column two that calls the reset_button_click_counter function
 with button_column_two:
