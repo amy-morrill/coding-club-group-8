@@ -15,12 +15,12 @@ if game_words:
    
 # Session state
 if 'selected_word' not in st.session_state:
-    st.session_state.selected_word = game_word_generator(selected_word)
+    st.session_state.selected_word = selected_word 
 
 # Create a text box for the player to enter a letter
-guess = st.text_input("Guess a letter:")
+guess = st.text_input("Guess a letter:", key="guess")
 
-# After players enter a letter, show whether they got it right or wrong
+# After players enter a letter, show whether they got it right or wrong - TO BE FIXED
 if guess:
     if len(guess) == 1:
         guess    
