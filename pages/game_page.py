@@ -1,5 +1,5 @@
 import streamlit as st
-import random
+import random 
 
 st.title("Build a Scientist")
 
@@ -11,23 +11,23 @@ def game_word_generator(word):
     
 if game_words:
     selected_word = random.choice(game_words)
-    game_word_generator(selected_word)
+
+game_word_generator(st.session_state.selected_word)
    
 # Session state
 if 'selected_word' not in st.session_state:
-    st.session_state.selected_word = selected_word 
+    st.session_state.selected_word = st.session_state.selected_word
 
-# Create a text box for the player to enter a letter
-guess = st.text_input("Guess a letter:", key="guess")
+# Create function to evaluate the guess
+def eval_guess():
+    if st.session_state.guess:
+        if st.session_state.guess in st.session_state.selected_word:
+            st.success("Good guess!")
+            st.write()
+        else: 
+            st.error("Try again")
 
-# After players enter a letter, show whether they got it right or wrong - TO BE FIXED
-if guess:
-    if len(guess) == 1:
-        guess    
-        if guess in st.session_state.selected_word:
-            st.success(f"Good guess!")
-        else:
-            st.error(f"Sorry - your scientist just lost his [insert equipment name]!")
-    else:
-        st.error("Please enter 1 letter.")
+guess = st.text_input("Guess a letter:", key="guess", on_change = eval_guess)
+ 
+        
  
