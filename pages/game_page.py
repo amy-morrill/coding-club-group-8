@@ -23,10 +23,7 @@ if 'bad_guesses' not in st.session_state:
 def game_word_generator(word):
     st.write(word)
     # Create a display string with underscores for each letter in the word
-    if not st.session_state.good_guesses:
-        final_word = st.write(f"`{' '.join(['_'] * len(word))}`")
-    else:
-        final_word = ' '.join([guess if guess in st.session_state.good_guesses else '_' for guess in word])
+    final_word = ' '.join([guess if guess in st.session_state.good_guesses else '_' for guess in word])
     st.write(final_word)
     
 # st.write(st.session_state.good_guesses)
