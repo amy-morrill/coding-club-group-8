@@ -23,7 +23,7 @@ if 'bad_guesses' not in st.session_state:
 def game_word_generator(word):
     st.write(word)
     # Create a display string with underscores for each letter in the word
-    final_word = ' '.join([guess if guess in st.session_state.good_guesses else '_' for guess in word])
+    final_word = ' '.join([guess if guess.lower() in st.session_state.good_guesses else '_' for guess in word])
     st.write(final_word)
     
 # st.write(st.session_state.good_guesses)
@@ -34,12 +34,14 @@ game_word_generator(st.session_state.selected_word)
 # Create function to evaluate the guess
 def eval_guess():
     guess = st.session_state.guess
-    if guess:
-        if guess in st.session_state.selected_word.lower():
+    if len(guess) == 1:
+        if guess in st.session_state.selected_word:
             st.session_state.good_guesses.append(guess) 
             st.success("Good guess!")
         else: 
             st.session_state.bad_guesses.append(guess)
             st.error("Try again") 
+    else :
+        st.error("Guess must be one character long.")
 
 guess = st.text_input("Guess a letter:", key="guess", on_change=eval_guess)
