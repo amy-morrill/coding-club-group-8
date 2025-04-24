@@ -3,31 +3,46 @@ import random
 
 st.title("Build a Scientist")
 
-game_words = ['Genetic','Histology','Sequence','Clinical Trial','Mutation','Genome','Oncology']
+# Create game words
+game_words = ['Genetic','Histology','Sequence','Mutation','Genome','Oncology']
 
-def game_word_generator(word): 
-    st.write(word)
-    st.write(f"`{' '.join(['_'] * len(word))}`")
-    
+# Select a random word from the game words list
 if game_words:
     selected_word = random.choice(game_words)
 
-game_word_generator(st.session_state.selected_word)
-   
 # Session state
 if 'selected_word' not in st.session_state:
-    st.session_state.selected_word = st.session_state.selected_word
+    st.session_state.selected_word = selected_word
+    
+if 'good_guesses' not in st.session_state:
+    st.session_state.good_guesses = []
+
+if 'bad_guesses' not in st.session_state:
+    st.session_state.bad_guesses = []
+
+# Display the word as underscores and update this as good guesses are entered 
+def game_word_generator(word):
+    st.write(word)
+    if not st.session_state.good_guesses:
+        final_word = st.write(f"`{' '.join(['_'] * len(word))}`")
+    else:
+        final_word = ' '.join([guess if guess in st.session_state.good_guesses else '_' for guess in word])
+    st.write(final_word)
+    
+# st.write(st.session_state.good_guesses)
+# st.write(st.session_state.bad_guesses)
+
+game_word_generator(st.session_state.selected_word)
 
 # Create function to evaluate the guess
 def eval_guess():
-    if st.session_state.guess:
-        if st.session_state.guess in st.session_state.selected_word:
+    guess = st.session_state.guess
+    if guess:
+        if guess in st.session_state.selected_word:
+            st.session_state.good_guesses.append(guess) 
             st.success("Good guess!")
-            st.write()
         else: 
-            st.error("Try again")
+            st.session_state.bad_guesses.append(guess)
+            st.error("Try again") 
 
-guess = st.text_input("Guess a letter:", key="guess", on_change = eval_guess)
- 
-        
- 
+guess = st.text_input("Guess a letter:", key="guess", on_change=eval_guess)
