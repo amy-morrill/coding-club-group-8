@@ -3,10 +3,9 @@ import random
 
 st.title("Build a Scientist")
 
-# Create game words
 game_words = ['Genetic','Histology','Sequence','Mutation','Genome','Oncology']
 
-# Select a random word from the game words list
+
 if game_words:
     selected_word = random.choice(game_words)
 
@@ -20,9 +19,10 @@ if 'good_guesses' not in st.session_state:
 if 'bad_guesses' not in st.session_state:
     st.session_state.bad_guesses = []
 
-# Display the word as underscores and update this as good guesses are entered 
+# Display and update the game word as player enters new guesses 
 def game_word_generator(word):
     st.write(word)
+    # Create a display string with underscores for each letter in the word
     if not st.session_state.good_guesses:
         final_word = st.write(f"`{' '.join(['_'] * len(word))}`")
     else:
@@ -38,7 +38,7 @@ game_word_generator(st.session_state.selected_word)
 def eval_guess():
     guess = st.session_state.guess
     if guess:
-        if guess in st.session_state.selected_word:
+        if guess in st.session_state.selected_word.lower():
             st.session_state.good_guesses.append(guess) 
             st.success("Good guess!")
         else: 
