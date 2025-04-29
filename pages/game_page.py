@@ -24,7 +24,6 @@ if 'inventory' not in st.session_state:
 
 # Display and update the game word as player enters new guesses 
 def game_word_generator(word):
-    st.write(word)
     # Create a display string with underscores for each letter in the word
     final_word = f"`{' '.join([guess if guess.lower() in st.session_state.good_guesses else '_' for guess in word])}`"
     st.write(final_word)
@@ -36,7 +35,7 @@ def game_word_generator(word):
 
 # Create function to evaluate the guess
 def eval_guess():
-    guess = st.session_state.guess
+    guess = st.session_state.guess.lower()
     if len(guess) == 1:
         if guess in st.session_state.selected_word:
             st.session_state.good_guesses.append(guess) 
@@ -49,10 +48,14 @@ def eval_guess():
         st.error("Guess must be one character long.")
 
 # Check if person wins or loses the game and send them to the right page
-    if st.session_state.good_guesses == st.session_state.selected_word:
-        st.switch_page("win_page.py")
-    if st.session_state.inventory == []:
-        st.switch_page("lose_page.py")
+guessed_letters_list = []
+for letter in st.session_state.selected_word:
+    guessed_letters_list.append(letter in st.session_state.good_guesses)
+
+if all(guessed_letters_list):
+    st.switch_page("win_page.py")
+if st.session_state.inventory == []:
+    st.switch_page("lose_page.py")
 
 # Create two columns to put buttons into
 scientist_column, inventory_column_1, inventory_column_2 = st.columns([0.5, 0.25, 0.25])
