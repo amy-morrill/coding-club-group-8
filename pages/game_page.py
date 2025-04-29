@@ -29,7 +29,9 @@ def game_word_generator(word):
     final_word = f"`{' '.join([guess if guess.lower() in st.session_state.good_guesses else '_' for guess in word])}`"
     st.write(final_word)
 # Create text box for bad guesses
-    st.text_area("Bad guesses:", value=" ".join(st.session_state.bad_guesses), height=80)
+    with st.container (height=100):
+        st.write("Bad guesses:") 
+        st.text(" ".join(st.session_state.bad_guesses))
 
 # Create function to evaluate the guess
 def eval_guess():
