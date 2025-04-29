@@ -22,7 +22,7 @@ if not st.session_state.user_name:
  
 # If a user name is saved, write a message using it and display an image
 if st.session_state.user_name:
-    st.write(f"Hello, {st.session_state.user_name}! I’m Dr. Doofenshmirtz and I need your help! The future of science depends on us cracking the five mystery words. But be careful—every wrong guess makes me disappear little by little! We need your skills to guess the right letters. You’ll have [X] guesses each time. Let’s get started!")
+    st.write(f"Hello, {st.session_state.user_name}! I’m Dr. Doofenshmirtz and I need your help! The future of science depends on you guessing a mystery word. But be careful—every wrong guess makes me lose a piece of equipment one by one! We need your skills to guess the right letters. You’ll have [7] guesses each time. Let’s get started!")
     
     # Display the scientist
     st.image("images/scientist-beaker-test-tube-animated-f.gif")
