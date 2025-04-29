@@ -3,7 +3,7 @@ import random
 
 st.title("Build a Scientist")
 
-game_words = ['Genetic','Histology','Sequence','Mutation','Genome','Oncology']
+game_words = ['genetic','histology','sequence','mutation','genome','oncology']
 
 
 if game_words:
@@ -28,6 +28,8 @@ def game_word_generator(word):
     # Create a display string with underscores for each letter in the word
     final_word = f"`{' '.join([guess if guess.lower() in st.session_state.good_guesses else '_' for guess in word])}`"
     st.write(final_word)
+# Create text box for bad guesses
+    st.text_area("Bad guesses:", value=" ".join(st.session_state.bad_guesses), height=80)
 
 # Create function to evaluate the guess
 def eval_guess():
