@@ -1,7 +1,7 @@
 import streamlit as st
 import random 
 
-st.title("Build a Scientist")
+st.markdown("<h1 style='text-align: center; color: gray;'>Build A Scientist</h1>", unsafe_allow_html=True)
 
 game_words = ['genetic','histology','sequence','mutation','genome','oncology']
 
@@ -30,7 +30,7 @@ def game_word_generator(word):
 
 # Create text box for bad guesses
     with st.container (height=100):
-        st.write("Bad guesses:") 
+        st.write("Incorrect Letters:")
         st.text(" ".join(st.session_state.bad_guesses))
 
 # Create function to evaluate the guess
@@ -67,7 +67,7 @@ with scientist_column:
 
 
 with inventory_column_1:
-    st.write("Inventory", )
+    st.subheader(":rainbow[Inventory]")
     if "petridish" in st.session_state["inventory"]:
         st.image("images/petridish test.jpg", width=175)
     if "microscope" in st.session_state["inventory"]:
@@ -77,7 +77,7 @@ with inventory_column_1:
     if "medical gloves" in st.session_state["inventory"]:
         st.image("images/medical gloves.jpg", width=200)
 with inventory_column_2:
-    st.write("")
+    st.subheader("")
     if "x-ray" in st.session_state["inventory"]:
         st.image("images/x-ray.jpg", width=250)
     if "treatments" in st.session_state["inventory"]:
