@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Create title for page
-st.title("Build a Scientist!")
+st.markdown("<h1 style='text-align: center; color: gray;'>Build A Scientist</h1>", unsafe_allow_html=True)
 
 # This is a function that sets the user name variable to the value of
 # user_name_text_input and sets user_name_text_input back to the empty string
